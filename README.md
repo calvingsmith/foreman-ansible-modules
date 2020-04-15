@@ -30,7 +30,7 @@ Starting with Ansible 2.7, Ansible only supports Python 2.7 and 3.5 (and higher)
 * Some modules, e.g. `katello_sync` and `katello_content_view_version`, trigger long running tasks on the server side. It might be beneficial to your playbook to wait for their completion in an asynchronous manner.
   As Ansible has facilities to do so, the modules will wait unconditionally. See the [Ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/playbooks_async.html) for putting tasks in the background.
 
-* `foreman_compute_resource` leak sensible data if used within a loop. According to [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html), using loop over ansible resources can leak sensible data. You can prevent this by using `no_log: yes` on the task.
+* `foreman_compute_resource` can leak sensitive data if used within a loop. According to [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html), using loop over ansible resources can leak sensitive data. You can prevent this by using `no_log: yes` on the task.
   
   eg:
    ```yaml
@@ -57,7 +57,7 @@ There are currently three ways to use the modules in your setup: install from An
 
 ### Installation from Ansible Galaxy
 
-You can install the collection from [Ansible Galaxy](https://galaxy.ansible.com/theforeman/foreman) by running `mazer install theforeman.foreman` (Ansible 2.8) or `ansible-galaxy collection install theforeman.foreman` (Ansible 2.9 and later).
+You can install the collection from [Ansible Galaxy](https://galaxy.ansible.com/theforeman/foreman), by running `mazer install theforeman.foreman` (Ansible 2.8) or `ansible-galaxy collection install theforeman.foreman` (Ansible 2.9 and later).
 
 After the installation, the modules are available as `theforeman.foreman.<module_name>`. Please see the [Using Ansible collections documentation](https://docs.ansible.com/ansible/devel/user_guide/collections_using.html) for further details.
 
@@ -71,7 +71,7 @@ After installing the RPM, you can use the modules in the same way as when they a
 
 If you don't want to install the collection, or use an Ansible version that does not support collections (< 2.8), you can consume the modules directly from Git.
 
-Just clone the [foreman-ansible-modules git repository](https://github.com/theforeman/foreman-ansible-modules.git) to your machine and add the path to the modules to `ansible.cfg`.
+Just clone the [foreman-ansible-modules git repository](https://github.com/theforeman/foreman-ansible-modules.git), to your machine and add the path to the modules to `ansible.cfg`.
 
 Let's assume you have a directory of playbooks and roles in a git repository for your infrastructure named `infra`:
 
